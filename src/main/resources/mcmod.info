@@ -1,0 +1,16 @@
+[
+{
+  "modid": "it",
+  "name": "iBluPrint",
+  "description": "Ghost blocks.",
+  "version": "0.1",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Dennys"],
+  "credits": "Me",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
