@@ -5,12 +5,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL14;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
@@ -21,6 +24,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import scala.Console;
 
 public class GetterBlock extends BlockBase {
@@ -46,6 +50,12 @@ public class GetterBlock extends BlockBase {
 			
 			reader.close();
 			
+			IBlockState newBlockState = worldIn.getBlockState(pos.down());
+			
+			BlockPos newBlockPos = new BlockPos(playerIn.posX+1, playerIn.posY+1, playerIn.posZ+1);
+			
+			//worldIn.setBlock(playerIn.posX+1, playerIn.posY+1, playerIn.posZ+1, dennys.iBluPrint.init.ModBlocks.GHOST_BLOCK, worldIn.getBlockState(pos).getBlock().getMetaFromState(state), 3);
+			worldIn.setBlockState(newBlockPos, newBlockState, 3);
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
