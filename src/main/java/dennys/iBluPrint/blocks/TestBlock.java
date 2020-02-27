@@ -24,14 +24,21 @@ public class TestBlock extends BlockBase {
 	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		Iterable<BlockPos> positions = BlockPos.getAllInBox(pos, pos.add(3,3,3));
-		List<String> blockNames = new ArrayList<String>();
-		for(BlockPos currBlockPos : positions) {
-			String blockName = worldIn.getBlockState(currBlockPos).getBlock().getLocalizedName();
-			blockNames.add(worldIn.getBlockState(currBlockPos).getBlock().getLocalizedName());
-			Console.println(blockName + ": " + currBlockPos);
+		int width, height, length;
+		width = 1;
+		height = 1;
+		length = 1;
+		List<BlockPos> positions = new ArrayList<BlockPos>();;
+		for(int y = 0; y <= height; y++) {
+			for(int z = 0; z <= length; z++) {
+				for(int x = 0; x <= width; x++) {
+					BlockPos position = new BlockPos((pos.getX() + x), (pos.getY()+y), (pos.getZ()+z));
+					positions.add(position);
+				}
+			}
 		}
 		
+		//Iterable<BlockPos> positions = BlockPos.getAllInBox(pos, pos.add(width,length,height));
 		File blueprint = new File("iBluPrint/");
 		String filename = "example";
 		
@@ -41,10 +48,19 @@ public class TestBlock extends BlockBase {
 		
 		try {
 			FileWriter w = new FileWriter("iBluPrint/" + filename + ".txt");
-			for(int i = 0; i < blockNames.size(); i++) {
-				String currBlock = blockNames.get(i);
-				w.write(currBlock + "\n");
+			w.write(Integer.toString(width));
+			w.write('\n');
+			w.write(Integer.toString(length));
+			w.write('\n');
+			w.write(Integer.toString(height));
+			w.write('\n');
+			
+			for(BlockPos currBlockPos : positions) {
+				int blockID = worldIn.getBlockState(currBlockPos).getBlock().getIdFromBlock(worldIn.getBlockState(currBlockPos).getBlock());
+				w.write(Integer.toString(blockID));
+				w.write('\n');
 			}
+			
 			w.close();
 		} catch (IOException e) {
 			e.printStackTrace();
