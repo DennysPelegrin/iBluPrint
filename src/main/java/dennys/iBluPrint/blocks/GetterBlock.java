@@ -9,6 +9,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL14;
 
@@ -78,11 +80,13 @@ public class GetterBlock extends BlockBase {
 			double orig_x = playerIn.posX + 1;
 			double orig_y = playerIn.posY + 5;
 			double orig_z = playerIn.posZ + 1;
+			int currElem = 0;
 			
 			for(int y = 0; y <= height; y++) {
 				for(int z = 0; z <= length; z++) {
 					for(int x = 0; x <= width; x++) {
-						String currBlockID = blocksFromFile.get(x + y + z);
+						String currBlockID = blocksFromFile.get(currElem);
+						currElem++;
 						
 						BlockPos newBlockPos = new BlockPos(orig_x + x, orig_y + y, orig_z + z);
 						

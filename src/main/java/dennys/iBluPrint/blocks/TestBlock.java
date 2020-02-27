@@ -25,9 +25,9 @@ public class TestBlock extends BlockBase {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		int width, height, length;
-		width = 1;
-		height = 1;
-		length = 1;
+		width = 5;
+		height = 5;
+		length = 5;
 		List<BlockPos> positions = new ArrayList<BlockPos>();;
 		for(int y = 0; y <= height; y++) {
 			for(int z = 0; z <= length; z++) {

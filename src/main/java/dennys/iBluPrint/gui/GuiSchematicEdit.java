@@ -28,12 +28,12 @@ public class GuiSchematicEdit extends GuiScreen{
 		int id = 0;
 		
 		if (this.mc.world != null) {
-			this.buttonList.add(new GuiNumberField(this.fontRenderer, id++, this.width/2 - 50, this.height/2 - 30, 100, 20));
-			this.buttonList.add(new GuiNumberField(this.fontRenderer, id++, this.width/2 - 50, this.height/2 - 5, 100, 20));
-			this.buttonList.add(new GuiNumberField(this.fontRenderer, id++, this.width/2 - 50, this.height/2 + 20, 100, 20));
+			this.buttonList.add(new GuiNumberField(this.fontRenderer, id++, this.width/2 - 241, this.height/2 - 30, 100, 20));
+			this.buttonList.add(new GuiNumberField(this.fontRenderer, id++, this.width/2 - 241, this.height/2 - 5, 100, 20));
+			this.buttonList.add(new GuiNumberField(this.fontRenderer, id++, this.width/2 - 241, this.height/2 + 20, 100, 20));
 			this.buttonList.add(new GuiButton(id++, this.width - 90, this.height - 200, 80, 20, I18n.format("Unload")));
-			this.buttonList.add(new GuiButton(id++, this.width - 90, this.height - 190, 80, 20, I18n.format("Move Here")));
-			this.buttonList.add(new GuiUnicodeGlyphButton(id++, this.width - 90, this.height - 180, 80, 20, " " + I18n.format("Rotate"), "\u21bb", 2.0f));
+			this.buttonList.add(new GuiButton(id++, this.width - 90, this.height - 170, 80, 20, I18n.format("Move Here")));
+			this.buttonList.add(new GuiUnicodeGlyphButton(id++, this.width - 90, this.height - 140, 80, 20, " " + I18n.format("Rotate"), "\u21bb", 2.0f));
 			this.buttonList.add(new GuiButton(id++, 10, this.height - 70, 80, 20, I18n.format("Materials")));
 			
 		}
@@ -61,10 +61,10 @@ public class GuiSchematicEdit extends GuiScreen{
 	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks){
-		drawCenteredString(this.fontRenderer, I18n.format("Move Schematic"), this.width/2, this.height/2 - 45, 0xFFFFFF);
-        drawString(this.fontRenderer, I18n.format("X: "), this.width/2 - 65, this.height/2 - 24, 0xFFFFFF);
-        drawString(this.fontRenderer, I18n.format("Y: "), this.width/2 - 65, this.height/2 + 1, 0xFFFFFF);
-        drawString(this.fontRenderer, I18n.format("Z: "), this.width/2 - 65, this.height/2 + 26, 0xFFFFFF);
+		drawCenteredString(this.fontRenderer, I18n.format("Move Schematic"), this.width/2 - 200, this.height/2 - 45, 0xFFFFFF);
+        drawString(this.fontRenderer, I18n.format("X: "), this.width/2 - 256, this.height/2 - 24, 0xFFFFFF);
+        drawString(this.fontRenderer, I18n.format("Y: "), this.width/2 - 256, this.height/2 + 1, 0xFFFFFF);
+        drawString(this.fontRenderer, I18n.format("Z: "), this.width/2 - 256, this.height/2 + 26, 0xFFFFFF);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
 	}
