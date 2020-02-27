@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
+  "modid": "it",
+  "name": "iBluPrint",
+  "description": "Ghost blocks.",
+  "version": "0.1",
+  "mcversion": "1.12.2",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Dennys"],
+  "credits": "Me",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
