@@ -17,5 +17,5 @@ public class ModBlocks {
 	
 	public static final Block GETTER_BLOCK = new GetterBlock("getter_block", Material.IRON);
 	
-	public static final Block GHOST_BLOCK = new GhostBlock(Material.AIR);
+	public static final Block GHOST_BLOCK = new GhostBlock(Material.CIRCUITS);
 }

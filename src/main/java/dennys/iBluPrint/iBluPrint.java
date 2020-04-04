@@ -1,6 +1,8 @@
 package dennys.iBluPrint;
 
+import dennys.iBluPrint.events.ClientEvents;
 import dennys.iBluPrint.proxy.CommonProxy;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -22,13 +24,13 @@ public class iBluPrint {
 	//runs before initialization. Usually used for blocks, items, etc
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event) {
-		proxy.preInit(event);
+		
 	}
 	
 	//runs after initialization. Usually used for renders
 	@EventHandler
 	public static void init(FMLInitializationEvent event) {
-		proxy.init(event);
+		MinecraftForge.EVENT_BUS.register(new ClientEvents());
 	}
 	
 	//runs after initialization. ?

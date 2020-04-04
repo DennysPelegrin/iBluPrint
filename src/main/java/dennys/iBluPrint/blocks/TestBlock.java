@@ -25,9 +25,9 @@ public class TestBlock extends BlockBase {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		int width, height, length;
-		width = 5;
-		height = 5;
-		length = 5;
+		width = 3;
+		height = 3;
+		length = 3;
 		List<BlockPos> positions = new ArrayList<BlockPos>();;
 		for(int y = 0; y <= height; y++) {
 			for(int z = 0; z <= length; z++) {
@@ -57,7 +57,11 @@ public class TestBlock extends BlockBase {
 			
 			for(BlockPos currBlockPos : positions) {
 				int blockID = worldIn.getBlockState(currBlockPos).getBlock().getIdFromBlock(worldIn.getBlockState(currBlockPos).getBlock());
+				int meta = worldIn.getBlockState(currBlockPos).getBlock().getMetaFromState(worldIn.getBlockState(currBlockPos));
+				Console.println(meta);
 				w.write(Integer.toString(blockID));
+				w.write('\n');
+				w.write(Integer.toString(meta));
 				w.write('\n');
 			}
 			
