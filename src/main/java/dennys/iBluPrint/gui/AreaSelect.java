@@ -36,11 +36,11 @@ public class AreaSelect extends GuiScreen{
 		if (this.mc.world != null) {
 			//add the Red Point button to the buttonList
 			//parameters are button id, x and y of where you want the button to be, width and height of teh button, and the text in the button
-			this.buttonList.add(new GuiButton(id++, this.width/2 - 256, this.height/2 - 55, 100, 20, I18n.format("Red Point")));
+			this.buttonList.add(new GuiButton(id++, this.width/2 - 256, this.height/2 - 55, 100, 20, I18n.format("Corner A")));
 			this.buttonList.add(new GuiNumberField(this.fontRenderer, id++, this.width/2 - 256, this.height/2 - 30, 100, 20));
 			this.buttonList.add(new GuiNumberField(this.fontRenderer, id++, this.width/2 - 256, this.height/2 - 5, 100, 20));
 			this.buttonList.add(new GuiNumberField(this.fontRenderer, id++, this.width/2 - 256, this.height/2 + 20, 100, 20));
-			this.buttonList.add(new GuiButton(id++, this.width/2 + 156, this.height/2 - 55, 100, 20, I18n.format("Blue Point")));
+			this.buttonList.add(new GuiButton(id++, this.width/2 + 156, this.height/2 - 55, 100, 20, I18n.format("Corner B")));
 			this.buttonList.add(new GuiNumberField(this.fontRenderer, id++, this.width/2 + 156, this.height/2 - 30, 100, 20));
 			this.buttonList.add(new GuiNumberField(this.fontRenderer, id++, this.width/2 + 156, this.height/2 - 5, 100, 20));
 			this.buttonList.add(new GuiNumberField(this.fontRenderer, id++, this.width/2 + 156, this.height/2 + 20, 100, 20));

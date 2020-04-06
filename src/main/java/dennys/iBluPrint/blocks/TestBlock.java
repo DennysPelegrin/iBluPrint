@@ -28,7 +28,7 @@ public class TestBlock extends BlockBase {
 		width = 5;
 		height = 5;
 		length = 5;
-		List<BlockPos> positions = new ArrayList<BlockPos>();;
+		List<BlockPos> positions = new ArrayList<BlockPos>();
 		for(int y = 0; y <= height; y++) {
 			for(int z = 0; z <= length; z++) {
 				for(int x = 0; x <= width; x++) {
@@ -68,5 +68,4 @@ public class TestBlock extends BlockBase {
 		
 		return true;
 	}
-
 }
