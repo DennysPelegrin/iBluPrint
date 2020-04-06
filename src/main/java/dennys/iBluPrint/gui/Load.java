@@ -27,7 +27,6 @@ public class Load extends GuiScreen{
 
         this.schematicSlot = new SchematicSlot(this);
         
-        reloadSchematics();
     }
 
     @Override

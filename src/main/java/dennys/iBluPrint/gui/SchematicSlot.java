@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 
-import org.apache.commons.io.FilenameUtils
+import org.apache.commons.io.FilenameUtils;
 import org.lwjgl.opengl.GL11;
 
 public class SchematicSlot extends GuiSlot{
@@ -36,14 +36,14 @@ public class SchematicSlot extends GuiSlot{
 			return;
 		}
 		
-		SchematicEntry schematic = this.guiSchematicLoad.schematicFiles.get(slotIndex);
-		if (schematic.isDirectory()) {
-			this.load.changeDirectory(schematic.getName());
-			this.selectedIndex = -1;
-		}
-		else {
-			this.selectedIndex = slotIndex;
-		}
+//		SchematicEntry schematic = this.load.schematicFiles.get(slotIndex);
+//		if (schematic.isDirectory()) {
+//			this.load.changeDirectory(schematic.getName());
+//			this.selectedIndex = -1;
+//		}
+//		else {
+//			this.selectedIndex = slotIndex;
+//		}
 	}
 	
 	@Override
@@ -56,10 +56,10 @@ public class SchematicSlot extends GuiSlot{
 		
 	}
 	
-	@Override
-	protected void drawContainerBackGround(Tessellator tessellator) {
-		
-	}
+
+//	protected void drawContainerBackGround(Tessellator tessellator) {
+//		
+//	}
 	
     @Override
     protected void drawSlot(int index, int x, int y, int par4, int mouseX, int mouseY, float partialTicks) {
