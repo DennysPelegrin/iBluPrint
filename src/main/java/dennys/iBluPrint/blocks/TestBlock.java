@@ -57,7 +57,11 @@ public class TestBlock extends BlockBase {
 			
 			for(BlockPos currBlockPos : positions) {
 				int blockID = worldIn.getBlockState(currBlockPos).getBlock().getIdFromBlock(worldIn.getBlockState(currBlockPos).getBlock());
+				int meta = worldIn.getBlockState(currBlockPos).getBlock().getMetaFromState(worldIn.getBlockState(currBlockPos));
+				Console.println(meta);
 				w.write(Integer.toString(blockID));
+				w.write('\n');
+				w.write(Integer.toString(meta));
 				w.write('\n');
 			}
 			
