@@ -11,13 +11,17 @@ import java.util.Iterator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import dennys.iBluPrint.events.ClientEvents;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.Console;
 
 @SideOnly(Side.CLIENT)
 public class Materials extends GuiScreen{
@@ -28,37 +32,23 @@ public class Materials extends GuiScreen{
 	
 	public Materials(final GuiScreen guiScreen) {
 		this.lastScreen = guiScreen;
-	//	sortType = ItemStackSortType.fromString(ConfigurationHandler.sortType);
 		this.map = getBlockCount();
 	}
 	
 	private int[][] getBlockCount(){
 		HashMap<Integer, Integer> hashmap = new HashMap<Integer, Integer>();
-		try {
-			FileReader reader = new FileReader("iBluPrint/example.txt");
-			BufferedReader bufferedReader = new BufferedReader(reader);
-			
-			String currBlock = bufferedReader.readLine();
-			currBlock = bufferedReader.readLine();
-			currBlock = bufferedReader.readLine();
-			currBlock = bufferedReader.readLine();
-			
-			while(currBlock != null) {
-				if (!hashmap.containsKey(Integer.parseInt(currBlock))) {
-					hashmap.put(Integer.parseInt(currBlock), 1);
-				}
-				else {
-					hashmap.put(Integer.parseInt(currBlock), hashmap.get(Integer.parseInt(currBlock) + 1));
-				}
-				currBlock = bufferedReader.readLine();
+		for (int i = 0; i < ClientEvents.states.size(); i++) {
+			if (ClientEvents.states.get(i) == Blocks.AIR.getDefaultState()) {
+				continue;
 			}
-			reader.close();
-		}
-		catch (FileNotFoundException exception) {
-			exception.printStackTrace();
-		}
-		catch (IOException exception) {
-			exception.printStackTrace();
+			Block block = ClientEvents.states.get(i).getBlock();
+			int blockID = block.getIdFromBlock(block);
+			if (!hashmap.containsKey(blockID)) {
+				hashmap.put(blockID, 1);
+			}
+			else {
+				hashmap.put(blockID, hashmap.get(blockID) + 1);
+			}
 		}
 		
 		int[][] returnThis = new int[hashmap.size()][2];
@@ -85,7 +75,7 @@ public class Materials extends GuiScreen{
 	@Override
 	public void actionPerformed(final GuiButton guiButton) {
 		if (guiButton.enabled) {
-			if(guiButton.id == 1) {
+			if (guiButton.id == 1) {
 				Minecraft.getMinecraft().displayGuiScreen(this.lastScreen);
 			}
 		}
@@ -102,5 +92,11 @@ public class Materials extends GuiScreen{
 		drawString(this.fontRenderer, I18n.format("Material"), this.width/2 - 108, 4, 0x00FFFFFF);
 		drawString(this.fontRenderer, I18n.format("Amount"), this.width / 2 + 108 - this.fontRenderer.getStringWidth("Amount"), 4, 0x00FFFFFF);
 		super.drawScreen(x,  y,  partialTicks);
+	}
+	
+	@Override
+	public void handleMouseInput() throws IOException {
+		super.handleMouseInput();
+		this.materialSlot.handleMouseInput();
 	}
 }

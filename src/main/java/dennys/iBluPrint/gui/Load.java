@@ -4,15 +4,18 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import dennys.iBluPrint.events.ClientEvents;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
+import scala.Console;
 
 public class Load extends GuiScreen{
 	private SchematicSlot schematicSlot;
 	private GuiScreen lastScreen;
-	protected File currentDirectory = /*blah*/;
-	protected ArrayList<SchematicEntry> schematicFiles = new ArrayList<SchematicEntry>();
+	protected File currentDirectory = new File("iBluPrint/");
+	protected File[] schematicFiles;
+	public static String fileName;
 	
 	public Load(GuiScreen guiScreen) {
 		this.lastScreen = guiScreen;
@@ -26,6 +29,10 @@ public class Load extends GuiScreen{
         this.buttonList.add(new GuiButton(id++, this.width / 2 + 4, this.height - 36, 150, 20, I18n.format("Done")));
 
         this.schematicSlot = new SchematicSlot(this);
+        Console.println("I am in the initGUI");
+        
+        schematicFiles = new File("iBluPrint/").listFiles();
+        Console.println("I am after the line");
         
     }
 
@@ -39,7 +46,8 @@ public class Load extends GuiScreen{
     protected void actionPerformed(final GuiButton guiButton) {
         if (guiButton.enabled) {
             if (guiButton.id == 0) {
-            	loadSchematic();
+                fileName = schematicFiles[SchematicSlot.selectedIndex].getName();
+            	ClientEvents.loadBlueprint(fileName, false, 0, 0, 0);
                 this.mc.displayGuiScreen(this.lastScreen);
             } 
             else {

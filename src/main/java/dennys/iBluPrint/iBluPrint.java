@@ -24,12 +24,13 @@ public class iBluPrint {
 	//runs before initialization. Usually used for blocks, items, etc
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event) {
-		
+		proxy.preInit(event);
 	}
 	
 	//runs after initialization. Usually used for renders
 	@EventHandler
 	public static void init(FMLInitializationEvent event) {
+		proxy.init(event);
 		MinecraftForge.EVENT_BUS.register(new ClientEvents());
 	}
 	

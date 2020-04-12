@@ -1,23 +1,25 @@
 package dennys.iBluPrint.gui;
 
+import dennys.iBluPrint.events.ClientEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
+import scala.Console;
 
 public class GuiNumberField extends GuiButton {
 
 	private GuiTextField textField;
-	private GuiButton decreaseBtn;
-	private GuiButton increaseBtn;
+	public GuiButton decreaseBtn;
+	public GuiButton increaseBtn;
 	private boolean wasFocused;
 	private String previous = "0";
 
 	public GuiNumberField(FontRenderer fontRenderer, int id, int x, int y, int width, int height) {
 		super(id, 0, 0, width, height, "");
 		this.textField = new GuiTextField(0, fontRenderer, x + 1, y + 1, width - 12 * 2 - 2, height - 2);
-		this.decreaseBtn = new GuiButton(1, x + width - 12 * 2, y, 12, height, "-");
-		this.increaseBtn = new GuiButton(2, x + width - 12 * 1, y, 12, height, "+");
+		this.decreaseBtn = new GuiButton(id++, x + width - 12 * 2, y, 12, height, "-");
+		this.increaseBtn = new GuiButton(id++, x + width - 12 * 1, y, 12, height, "+");
 		this.textField.setText(String.valueOf(0));
 	}
 
@@ -52,6 +54,60 @@ public class GuiNumberField extends GuiButton {
 		}
 		if (this.decreaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true) {
 			this.textField.setText(String.valueOf(Integer.parseInt(this.textField.getText()) - 1));
+		}
+		if (this.decreaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.decreaseBtn.id == 1) {
+			ClientEvents.updatePosA(-1, 0, 0);
+		}
+		if (this.increaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.increaseBtn.id == 2) {
+			ClientEvents.updatePosA(1, 0, 0);
+		}
+		if (this.decreaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.decreaseBtn.id == 3) {
+			ClientEvents.updatePosA(0, -1, 0);
+		}
+		if (this.increaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.increaseBtn.id == 4) {
+			ClientEvents.updatePosA(0, 1, 0);
+		}
+		if (this.decreaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.decreaseBtn.id == 5) {
+			ClientEvents.updatePosA(0, 0, -1);
+		}
+		if (this.increaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.increaseBtn.id == 6) {
+			ClientEvents.updatePosA(0, 0, 1);
+		}
+		if (this.decreaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.decreaseBtn.id == 8) {
+			ClientEvents.updatePosB(-1, 0, 0);
+		}
+		if (this.increaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.increaseBtn.id == 9) {
+			ClientEvents.updatePosB(1, 0, 0);
+		}
+		if (this.decreaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.decreaseBtn.id == 10) {
+			ClientEvents.updatePosB(0, -1, 0);
+		}
+		if (this.increaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.increaseBtn.id == 11) {
+			ClientEvents.updatePosB(0, 1, 0);
+		}
+		if (this.decreaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.decreaseBtn.id == 12) {
+			ClientEvents.updatePosB(0, 0, -1);
+		}
+		if (this.increaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.increaseBtn.id == 13) {
+			ClientEvents.updatePosB(0, 0, 1);
+		}
+		if (this.decreaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.decreaseBtn.id == 20) {
+			ClientEvents.loadBlueprint(Load.fileName, true, -1, 0, 0);
+		}
+		if (this.increaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.increaseBtn.id == 21) {
+			ClientEvents.loadBlueprint(Load.fileName, true, 1, 0, 0);
+		}
+		if (this.decreaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.decreaseBtn.id == 22) {
+			ClientEvents.loadBlueprint(Load.fileName, true, 0, -1, 0);
+		}
+		if (this.increaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.increaseBtn.id == 23) {
+			ClientEvents.loadBlueprint(Load.fileName, true, 0, 1, 0);
+		}
+		if (this.decreaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.decreaseBtn.id == 24) {
+			ClientEvents.loadBlueprint(Load.fileName, true, 0, 0, -1);
+		}
+		if (this.increaseBtn.mousePressed(Minecraft.getMinecraft(), x, y) == true && this.increaseBtn.id == 25) {
+			ClientEvents.loadBlueprint(Load.fileName, true, 0, 0, 1);
 		}
 	}
 	
@@ -120,4 +176,5 @@ public class GuiNumberField extends GuiButton {
     public void setValue(int value) {
     	this.textField.setText(String.valueOf(value));
     }
+    
 }
