@@ -38,6 +38,7 @@ public class GuiSchematicEdit extends GuiScreen{
 			id++;
 			this.buttonList.add(new GuiButton(id++, this.width - 90, this.height - 200, 80, 20, I18n.format("Unload")));
 			this.buttonList.add(new GuiButton(id++, this.width - 90, this.height - 170, 80, 20, I18n.format("Move Here")));
+			id++;
 			//this.buttonList.add(new GuiUnicodeGlyphButton(id++, this.width - 90, this.height - 140, 80, 20, " " + I18n.format("Rotate"), "\u21bb", 2.0f));
 			this.buttonList.add(new GuiButton(id++, 10, this.height - 70, 80, 20, I18n.format("Materials")));
 			
